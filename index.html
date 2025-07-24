@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+</head>
+<body class="bg-blue-400 min-h-screen flex flex-col items-center px-4">
+    <h1 class="mt-16 mb-8 text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-wider text-center text-black dark:text-white">
+        Generate Password
+    </h1>
+
+    <!-- Password Display Box -->
+    <div class="flex items-center bg-gray-100 h-16 md:h-20 rounded-lg p-2 shadow-md w-full max-w-2xl">
+        <input id="generatedPassword"
+            type="text"
+            value="lsjdflkjjfd&^&*^"
+            readonly
+            class="w-full text-lg md:text-2xl bg-transparent outline-none px-2 text-gray-700 text-center"
+        />
+        <span class="material-symbols-outlined cursor-pointer text-3xl md:text-5xl mx-2" onclick="copyPassword()">
+            content_copy
+        </span>
+        <span class="material-symbols-outlined cursor-pointer text-3xl md:text-5xl mx-2" onclick="NewPassword();">
+            autorenew
+        </span>
+    </div>
+
+    <!-- Customize Password Section -->
+    <div class="bg-blue-100 p-4 rounded-lg shadow-md mt-10 w-full max-w-2xl">
+        <h2 class="font-bold text-lg md:text-xl mb-4 text-center">Customize your password</h2>
+
+        <!-- Length Control -->
+        <div class="mb-4 flex flex-col md:flex-row items-center justify-center gap-3">
+            <label for="password-length" class="font-medium text-gray-700">Password Length:</label>
+            <div class="flex items-center gap-x-3">
+                <input type="number" id="password-length" value="10" min="1" max="50"
+                    onchange="updateTextInput(this.value)"
+                    class="w-16 text-center text-gray-900 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
+                <input type="range" id="password-length-slider" min="1" max="50" value="10"
+                    onchange="updateRangeInput(this.value)"
+                    class="w-32 md:w-40 h-4 rounded-lg focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+            </div>
+        </div>
+
+        <!-- Checkboxes -->
+        <div class="grid grid-cols-2 gap-3 md:flex md:flex-col md:items-center">
+            <div class="flex items-center">
+                <input type="checkbox" id="lowercase" checked
+                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 rounded" />
+                <label for="lowercase" class="ml-2 text-gray-700">Lowercase</label>
+            </div>
+            <div class="flex items-center">
+                <input type="checkbox" id="uppercase" checked
+                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 rounded" />
+                <label for="uppercase" class="ml-2 text-gray-700">Uppercase</label>
+            </div>
+            <div class="flex items-center">
+                <input type="checkbox" id="numbers" checked
+                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 rounded" />
+                <label for="numbers" class="ml-2 text-gray-700">Numbers</label>
+            </div>
+            <div class="flex items-center">
+                <input type="checkbox" id="symbols" checked
+                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 rounded" />
+                <label for="symbols" class="ml-2 text-gray-700">Symbols</label>
+            </div>
+        </div>
+
+        <!-- Generate Button -->
+        <div class="flex justify-center mt-6">
+            <button onclick="NewPassword()"
+                class="bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg w-2/3 md:w-1/3 hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                Generate Password
+            </button>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
